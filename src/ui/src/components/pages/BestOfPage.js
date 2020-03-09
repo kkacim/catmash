@@ -21,7 +21,7 @@ class BestOfPage extends Component {
         return(
             <Paper>
                 <h1>
-                    Best of : The cuttests cats
+                    Best of : The cutest cats
                 </h1>
                 <Grid
                     container
