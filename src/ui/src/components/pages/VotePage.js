@@ -32,7 +32,7 @@ class VotePage extends Component {
         return(
             <Paper>
                 <h1>
-                    Vote for the cuttest cat
+                    Vote for the cutest cat
                 </h1>
                 <Grid
                     container
