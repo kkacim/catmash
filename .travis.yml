@@ -8,3 +8,8 @@ jdk:
 install:
   - mvn install -DskipTests=true -B -V
   - mvn test -B
+
+deploy:
+  provider: heroku
+  api_key: ${herokuappkey}
+  app: kk-cat-mash
