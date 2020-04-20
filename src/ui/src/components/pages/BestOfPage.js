@@ -1,43 +1,35 @@
-import React, {Component} from 'react';
-import {Paper, Grid} from '@material-ui/core/';
+import React, { useState, useEffect } from 'react'
+import {Paper, Grid} from '@material-ui/core/'
 import CatCard from '../common/CatCard'
-import api from "../../api";
+import api from "../../api"
 
-class BestOfPage extends Component {
-    state = {
-        cats: []
-    }
+const BestOfPage = () => {
+    const [cats, setCats] = useState([])
 
-    componentDidMount = () => {
+    useEffect(() => {
         api.bestOf()
-            .then(cats =>
-                this.setState({
-                    cats
-                })
-            )
-    }
+            .then(cats => setCats(cats))
+    }, [])
 
-    render() {
-        return(
-            <Paper>
-                <h1>
-                    Best of : The cutest cats
-                </h1>
-                <Grid
-                    container
-                    alignItems="center"
-                    justify="center"
-                    spacing={2}
-                    >
-                    {this.state.cats.map(cat => 
-                        <Grid item key={cat.id} xs={2}>
-                            <CatCard cat={cat}/>
-                        </Grid>
-                    )}
-                </Grid>
-            </Paper>
-        )
-    }
+    return(
+        <Paper>
+            <h1>
+                Best of : The cuttests cats
+            </h1>
+            <Grid
+                container
+                alignItems="center"
+                justify="center"
+                spacing={2}
+                >
+                {cats.map(cat => 
+                    <Grid item key={cat.id} xs={2}>
+                        <CatCard cat={cat}/>
+                    </Grid>
+                )}
+            </Grid>
+        </Paper>
+    )
 }
 
-export default BestOfPage;
+export default BestOfPage

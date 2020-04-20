@@ -1,5 +1,5 @@
-import React from 'react';
-import {Card, CardMedia, CardContent, CardActions, Button} from '@material-ui/core/';
+import React from 'react'
+import {Card, CardMedia, CardContent, CardActions, Button} from '@material-ui/core/'
 
 const CatCard = ({cat, voteAction}) => (
     <Card>
@@ -25,4 +25,4 @@ const CatCard = ({cat, voteAction}) => (
     </Card>
 )
 
-export default CatCard;
+export default CatCard
