@@ -1,54 +1,42 @@
-import React, {Component} from 'react';
-import {Paper, Grid} from '@material-ui/core/';
+import React, { useState, useEffect } from 'react'
+import {Paper, Grid} from '@material-ui/core/'
 import CatCard from '../common/CatCard'
-import api from "../../api";
+import api from "../../api"
 
-class VotePage extends Component {
-    state = {
-        cats: []
-    }
+const VotePage = () => {
+    const [cats, setCats] = useState([])
 
-    componentDidMount = () => {
+    useEffect(() => {
         api.random()
-            .then(cats =>
-                this.setState({
-                    cats
-                })
-            )
-    }
+            .then(cats => setCats(cats))
+    }, [])
 
-    handleVote = winnerId => {
-        api.vote(winnerId, this.state.cats.filter( cat => cat.id !== winnerId)[0].id)
+    const handleVote = winnerId => {
+        api.vote(winnerId, cats.filter( cat => cat.id !== winnerId)[0].id)
 
         api.random()
-            .then(cats =>
-                this.setState({
-                    cats
-                })
-            )
+            .then(cats =>setCats(cats))
     }
 
-    render() {
-        return(
-            <Paper>
-                <h1>
-                    Vote for the cutest cat
-                </h1>
-                <Grid
-                    container
-                    alignItems="center"
-                    justify="center"
-                    spacing={6}
-                    >
-                    {this.state.cats.map(cat => 
-                        <Grid item key={cat.id} xs={4}>
-                            <CatCard cat={cat} voteAction={this.handleVote}/>
-                        </Grid>
-                    )}                        
-                </Grid>
-            </Paper>
-        );
-    }
+    return(
+        <Paper>
+            <h1>
+                Vote for the cuttest cat
+            </h1>
+            <Grid
+                container
+                alignItems="center"
+                justify="center"
+                spacing={6}
+                >
+                {cats.map(cat => 
+                    <Grid item key={cat.id} xs={4}>
+                        <CatCard cat={cat} voteAction={handleVote}/>
+                    </Grid>
+                )}                        
+            </Grid>
+        </Paper>
+    )
 }
 
-export default VotePage;
+export default VotePage

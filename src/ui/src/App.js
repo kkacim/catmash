@@ -1,6 +1,6 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch, NavLink} from 'react-router-dom';
-import {Container, Button,ButtonGroup} from '@material-ui/core/';
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch, NavLink} from 'react-router-dom'
+import {Container, Button,ButtonGroup} from '@material-ui/core/'
 import VotePage from "./components/pages/VotePage"
 import BestOfPage from "./components/pages/BestOfPage"
 
@@ -19,4 +19,4 @@ const App = () => (
   </Container>
 );
 
-export default App;
+export default App
