@@ -9,7 +9,7 @@
     </parent>
     <groupId>org</groupId>
     <artifactId>catmash</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>catmash</name>
     <description>CatMash: Find the cutest cat</description>
 
@@ -125,6 +125,6 @@
         <connection>scm:git:git@github.com:kkacim/catmash.git</connection>
         <url>http://github.com/kkacim/catmash.git</url>
         <developerConnection>scm:git:git@github.com:kkacim/catmash.git</developerConnection>
-      <tag>v1.0.0</tag>
+      <tag>HEAD</tag>
   </scm>
 </project>
