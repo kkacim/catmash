@@ -5,9 +5,24 @@ language: java
 jdk:
   - openjdk11
 
-install:
-  - mvn install -DskipTests=true -B -V
-  - mvn test -B
+services:
+  - docker
+
+before_install:
+  - docker pull adoptopenjdk/openjdk11:ubi
+
+install: skip
+
+script:
+  - mvn package
+
+after_success:
+  - export COMMIT=${TRAVIS_COMMIT::7}
+  - export TAG=`if [ ! -z "$TRAVIS_TAG" ]; then echo "$TRAVIS_TAG"; else echo "$TRAVIS_BRANCH"; fi`
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - docker-compose build
+  - docker tag $IMAGE_NAME:latest $IMAGE_NAME:$TAG
+  - docker push $IMAGE_NAME:$TAG
 
 deploy:
   provider: heroku
