@@ -17,14 +17,16 @@ script:
   - mvn package
 
 after_success:
-  - export COMMIT=${TRAVIS_COMMIT::7}
-  - export TAG=`if [ ! -z "$TRAVIS_TAG" ]; then echo "$TRAVIS_TAG"; else echo "$TRAVIS_BRANCH"; fi`
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - docker-compose build
-  - docker tag $IMAGE_NAME:latest $IMAGE_NAME:$TAG
-  - docker push $IMAGE_NAME:$TAG
+  - if [ ! -z "$TRAVIS_TAG" ]; then
+      docker login -u $DOCKER_USER -p $DOCKER_PASS;
+      docker-compose build;
+      docker tag $IMAGE_NAME:latest $IMAGE_NAME:$TRAVIS_TAG;
+      docker push $IMAGE_NAME:$TRAVIS_TAG;
+    fi
 
 deploy:
   provider: heroku
   api_key: ${herokuappkey}
   app: kk-cat-mash
+  on:
+    tags: true
