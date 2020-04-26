@@ -10,17 +10,24 @@ For more information about this rating system, visit this [page](https://en.wiki
 
 #####The application is deployed on Heroku: [Click here](https://kk-cat-mash.herokuapp.com)
 
-## 1.Compile
-### Maven
-Run command :
+## 1. Run with Docker
+Run command:
 ```
-mvn install
+docker-compose up -d
 ```
 
-## 2.Execute
-### Java
+## 2. Run with Java
+### 2.1 Compile
+#### Maven
+Run command :
+```
+mvn package
+```
+
+### 2.2 Execute
+#### Java
 The compile command build an executable fat jar.
 Run the jar with the command :
 ```
-java -jar catmash.jar
+java -jar catmash**.jar
 ```
