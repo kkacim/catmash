@@ -122,5 +122,9 @@
             </plugin>
         </plugins>
     </build>
-
+    <scm>
+        <connection>scm:git:git@github.com:kkacim/catmash.git</connection>
+        <url>http://github.com/kkacim/catmash.git</url>
+        <developerConnection>scm:git:git@github.com:kkacim/catmash.git</developerConnection>
+    </scm>
 </project>
